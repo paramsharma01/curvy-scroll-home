@@ -23,18 +23,18 @@ export function Navbar() {
 
   return (
     <nav className={cn(
-      "navbar fixed top-4 left-0 right-0 mx-auto w-[95%] max-w-7xl z-50 bg-white/80 p-3 border border-gray-200 backdrop-blur-md",
+      "navbar fixed top-4 left-0 right-0 mx-auto w-[95%] max-w-7xl z-50 p-3 border backdrop-blur-md",
       scrolled ? "navbar-scrolled" : ""
     )}>
       <div className="flex justify-between items-center">
-        <Link to="/" className="text-lg font-medium pl-4 transform transition-all hover:scale-105">
+        <Link to="/" className="text-lg font-medium pl-4 transform transition-all hover:scale-105 text-blue-300">
           Collegekendra
         </Link>
         <div className="flex gap-4">
-          <Link to="/login" className="px-6 py-2 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors">
+          <Link to="/login" className="px-6 py-2 border border-slate-600 rounded-full hover:bg-slate-800 hover:border-blue-500 transition-colors text-slate-300">
             login
           </Link>
-          <Link to="/signup" className="px-6 py-2 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors">
+          <Link to="/signup" className="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors">
             signup
           </Link>
         </div>
