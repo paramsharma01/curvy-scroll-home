@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -98,4 +99,25 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Custom Navbar Animation */
+.navbar {
+  transition: all 0.3s ease;
+  border-radius: 0.5rem;
+}
+
+.navbar-scrolled {
+  border-radius: 2rem;
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Review Cards */
+.review-card {
+  transition: all 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
 }
