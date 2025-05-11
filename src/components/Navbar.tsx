@@ -23,7 +23,7 @@ export function Navbar() {
 
   return (
     <nav className={cn(
-      "navbar fixed top-4 left-0 right-0 mx-auto w-[95%] max-w-7xl z-50 bg-white p-3 border border-gray-200",
+      "navbar fixed top-4 left-0 right-0 mx-auto w-[95%] max-w-7xl z-50 bg-white/80 p-3 border border-gray-200 backdrop-blur-md",
       scrolled ? "navbar-scrolled" : ""
     )}>
       <div className="flex justify-between items-center">

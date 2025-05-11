@@ -104,11 +104,11 @@
 /* Custom Navbar Animation */
 .navbar {
   transition: all 0.3s ease;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
 }
 
 .navbar-scrolled {
-  border-radius: 2rem;
+  border-radius: 2.5rem;
   transform: scale(1.02);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
