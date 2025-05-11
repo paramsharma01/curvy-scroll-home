@@ -5,7 +5,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 210 40% 98%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -14,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 221.2 83% 53.3%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -31,7 +31,7 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 221.2 83% 53.3%;
 
     --radius: 0.5rem;
 
@@ -98,6 +98,9 @@
 
   body {
     @apply bg-background text-foreground;
+    background-image: 
+      radial-gradient(at 80% 0%, hsla(189, 100%, 56%, 0.05) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, hsla(355, 100%, 93%, 0.1) 0px, transparent 50%);
   }
 }
 
@@ -105,19 +108,95 @@
 .navbar {
   transition: all 0.3s ease;
   border-radius: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
 .navbar-scrolled {
   border-radius: 2.5rem;
-  transform: scale(1.02);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: scale(1.02) translateZ(10px);
+  box-shadow: 
+    0 10px 20px rgba(0, 0, 0, 0.08),
+    0 5px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Cards with 3D effect */
+.footer-card, .review-card {
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 0.75rem;
+}
+
+.footer-card:hover, .review-card:hover {
+  transform: translateY(-5px) rotateX(5deg);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* Review Cards */
 .review-card {
-  transition: all 0.3s ease;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(209, 213, 219, 0.3);
 }
 
 .review-card:hover {
-  transform: translateY(-5px);
+  border-color: rgba(59, 130, 246, 0.5);
+}
+
+/* Link hover effects */
+a {
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+a:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: hsl(var(--primary));
+  transition: width 0.3s ease;
+}
+
+a:hover:after {
+  width: 100%;
+}
+
+/* Button hover effects */
+button, .btn {
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+button:after, .btn:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.7s ease;
+}
+
+button:hover:after, .btn:hover:after {
+  left: 100%;
+}
+
+/* Text shadow for headings */
+h1, h2, h3 {
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
 }

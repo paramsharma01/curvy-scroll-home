@@ -27,7 +27,7 @@ export function Navbar() {
       scrolled ? "navbar-scrolled" : ""
     )}>
       <div className="flex justify-between items-center">
-        <Link to="/" className="text-lg font-medium">
+        <Link to="/" className="text-lg font-medium pl-4 transform transition-all hover:scale-105">
           Collegekendra
         </Link>
         <div className="flex gap-4">
