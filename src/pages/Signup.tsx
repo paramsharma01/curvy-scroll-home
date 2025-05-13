@@ -15,6 +15,7 @@ import Footer from "@/components/Footer";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
+  username: z.string().min(3, "Username must be at least 3 characters"),
   universityName: z.string().min(2, "University name must be at least 2 characters"),
   rollNo: z.string().min(1, "Roll number is required"),
   course: z.string().min(2, "Course name must be at least 2 characters"),
@@ -34,6 +35,7 @@ const Signup = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
+      username: "",
       universityName: "",
       rollNo: "",
       course: "",
@@ -74,6 +76,26 @@ const Signup = () => {
                         <FormControl>
                           <Input
                             placeholder="Enter your name"
+                            className="pl-10 bg-slate-800/50 border-slate-700"
+                            {...field}
+                          />
+                        </FormControl>
+                      </div>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="username"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Username</FormLabel>
+                      <div className="relative">
+                        <UserRound className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
+                        <FormControl>
+                          <Input
+                            placeholder="Choose a unique username"
                             className="pl-10 bg-slate-800/50 border-slate-700"
                             {...field}
                           />
