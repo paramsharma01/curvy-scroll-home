@@ -8,20 +8,18 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Eye, EyeOff, Lock, Mail, UserRound } from "lucide-react";
+import { Eye, EyeOff, Lock, UserRound, BookOpen, Bookmark, Building } from "lucide-react";
 import { toast } from "@/components/ui/sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
+  universityName: z.string().min(2, "University name must be at least 2 characters"),
+  rollNo: z.string().min(1, "Roll number is required"),
+  course: z.string().min(2, "Course name must be at least 2 characters"),
   password: z.string().min(8, "Password must be at least 8 characters"),
   confirmPassword: z.string(),
-  terms: z.boolean().refine(val => val === true, {
-    message: "You must accept the terms and conditions",
-  }),
 }).refine((data) => data.password === data.confirmPassword, {
   message: "Passwords do not match",
   path: ["confirmPassword"],
@@ -36,10 +34,11 @@ const Signup = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      email: "",
+      universityName: "",
+      rollNo: "",
+      course: "",
       password: "",
       confirmPassword: "",
-      terms: false,
     },
   });
 
@@ -86,15 +85,55 @@ const Signup = () => {
                 />
                 <FormField
                   control={form.control}
-                  name="email"
+                  name="universityName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email</FormLabel>
+                      <FormLabel>University Name</FormLabel>
                       <div className="relative">
-                        <Mail className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
+                        <Building className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
                         <FormControl>
                           <Input
-                            placeholder="Enter your email"
+                            placeholder="Enter your university name"
+                            className="pl-10 bg-slate-800/50 border-slate-700"
+                            {...field}
+                          />
+                        </FormControl>
+                      </div>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="rollNo"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Roll Number</FormLabel>
+                      <div className="relative">
+                        <Bookmark className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
+                        <FormControl>
+                          <Input
+                            placeholder="Enter your roll number"
+                            className="pl-10 bg-slate-800/50 border-slate-700"
+                            {...field}
+                          />
+                        </FormControl>
+                      </div>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="course"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Course</FormLabel>
+                      <div className="relative">
+                        <BookOpen className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
+                        <FormControl>
+                          <Input
+                            placeholder="Enter your course"
                             className="pl-10 bg-slate-800/50 border-slate-700"
                             {...field}
                           />
@@ -153,57 +192,14 @@ const Signup = () => {
                     </FormItem>
                   )}
                 />
-                <FormField
-                  control={form.control}
-                  name="terms"
-                  render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                      <FormControl>
-                        <Checkbox
-                          checked={field.value}
-                          onCheckedChange={field.onChange}
-                        />
-                      </FormControl>
-                      <div className="space-y-1 leading-none">
-                        <FormLabel className="text-sm">
-                          I agree to the{" "}
-                          <Link to="/terms" className="text-blue-400 hover:text-blue-300">
-                            terms of service
-                          </Link>{" "}
-                          and{" "}
-                          <Link to="/privacy" className="text-blue-400 hover:text-blue-300">
-                            privacy policy
-                          </Link>
-                        </FormLabel>
-                        <FormMessage />
-                      </div>
-                    </FormItem>
-                  )}
-                />
                 <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
                   Create account
                 </Button>
               </form>
             </Form>
           </CardContent>
-          <CardFooter className="flex flex-col space-y-4">
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t border-slate-700" />
-              </div>
-              <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-card px-2 text-muted-foreground">Or continue with</span>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              <Button variant="outline" className="bg-slate-800/50 border-slate-700 hover:bg-slate-700/70">
-                Google
-              </Button>
-              <Button variant="outline" className="bg-slate-800/50 border-slate-700 hover:bg-slate-700/70">
-                Facebook
-              </Button>
-            </div>
-            <p className="text-center text-sm text-muted-foreground mt-4">
+          <CardFooter>
+            <p className="text-center w-full text-sm text-muted-foreground">
               Already have an account?{" "}
               <Link to="/login" className="text-blue-400 hover:text-blue-300">
                 Sign in
