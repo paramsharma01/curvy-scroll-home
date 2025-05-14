@@ -91,7 +91,7 @@ export default function Dashboard() {
             <h1 className="text-3xl font-bold mb-2 text-gradient">Seller Dashboard</h1>
             <p className="text-muted-foreground">Manage your marketplace listings</p>
           </div>
-          <Button asChild className="mt-4 sm:mt-0">
+          <Button asChild className="mt-4 sm:mt-0 bg-blue-600 hover:bg-blue-700">
             <Link to="/sell">
               <Plus className="mr-2 h-4 w-4" /> List New Item
             </Link>
@@ -130,7 +130,7 @@ export default function Dashboard() {
                   : "You don't have any archived listings"}
               </p>
               {activeTab === "active" && (
-                <Button asChild>
+                <Button asChild className="bg-blue-600 hover:bg-blue-700">
                   <Link to="/sell">
                     <Plus className="mr-2 h-4 w-4" /> List New Item
                   </Link>

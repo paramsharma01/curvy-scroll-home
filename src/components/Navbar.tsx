@@ -34,6 +34,9 @@ export function Navbar() {
           <Link to="/buy" className="px-4 py-2 hover:text-blue-400 transition-colors">
             Buy
           </Link>
+          <Link to="/dashboard" className="px-4 py-2 hover:text-blue-400 transition-colors">
+            Sell
+          </Link>
           <Link to="/login" className="px-6 py-2 border border-slate-600 rounded-full hover:bg-slate-800 hover:border-blue-500 transition-colors text-slate-300">
             login
           </Link>
