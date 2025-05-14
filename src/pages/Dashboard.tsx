@@ -24,7 +24,7 @@ const initialProducts = [
     price: 599,
     category: "Books",
     image: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?q=80&w=2730&auto=format&fit=crop",
-    status: "active",
+    status: "active" as const,
   },
   {
     id: "p2",
@@ -32,7 +32,7 @@ const initialProducts = [
     price: 1299,
     category: "Electronics",
     image: "https://images.unsplash.com/photo-1611321659616-0d303f26ed2c?q=80&w=2574&auto=format&fit=crop",
-    status: "active",
+    status: "active" as const,
   },
   {
     id: "p3",
@@ -40,7 +40,7 @@ const initialProducts = [
     price: 699,
     category: "Clothing",
     image: "https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=2670&auto=format&fit=crop",
-    status: "archived",
+    status: "archived" as const,
   },
 ];
 
