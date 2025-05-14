@@ -30,7 +30,10 @@ export function Navbar() {
         <Link to="/" className="text-lg font-medium pl-4 transform transition-all hover:scale-105 text-blue-300">
           Collegekendra
         </Link>
-        <div className="flex gap-4">
+        <div className="flex items-center gap-4">
+          <Link to="/buy" className="px-4 py-2 hover:text-blue-400 transition-colors">
+            Buy
+          </Link>
           <Link to="/login" className="px-6 py-2 border border-slate-600 rounded-full hover:bg-slate-800 hover:border-blue-500 transition-colors text-slate-300">
             login
           </Link>
